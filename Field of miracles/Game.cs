@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Field_of_miracles
 {
-    class Game
+    public class Game
     {
-        public static bool End()
+        public bool End()
         {
             Console.WriteLine("Для завершения программы введите 'End' \nЧтобы начать заново введите'Repeat'");
             var t = true;
@@ -36,7 +36,7 @@ namespace Field_of_miracles
             }
             return x;
         }
-        public static bool TheWholeWord()
+        public bool TheWholeWord()
         {
             bool r = true;
             bool z = true;
@@ -63,7 +63,7 @@ namespace Field_of_miracles
             return r;
 
         }
-        public static bool TryWord(string word)
+        public bool TryWord(string word)
         {
             Console.WriteLine("Введите слово CAPS Lock'ом");
             var wordEquallValue = true;
@@ -79,6 +79,58 @@ namespace Field_of_miracles
                 wordEquallValue = false;
             }
             return wordEquallValue;
+        }
+        public void Start()
+        {          
+            QuestionAnswer word1 = new QuestionAnswer();
+            QuestionAnswer word2 = new QuestionAnswer();
+            QuestionAnswer word3 = new QuestionAnswer();
+            QuestionAnswer answer = new QuestionAnswer();
+            word1.Answer = "КОЛИБРИ";
+            word1.Question = "Эта птица может летать спиной вперед";           
+            word2.Answer = "ВРАТАРЬ";
+            word2.Question = "Так в старину называли сторожа городских ворот";            
+            word3.Answer = "ЧЕРЕПАХА";
+            word3.Question = "Какое животное дало название распространенному в Древнем Риме способу боевого построения?";
+
+
+
+
+            var random = new Random();
+            var ii = random.Next(0, 3);
+            string[] words = { word1.Answer , word2.Answer , word3.Answer };
+            string[] questions = { word1.Question, word2.Question, word3.Question };
+
+            var randomWord = words[ii];
+            var randomWordQuestion = questions[ii];
+
+            answer.Answer = randomWord;
+            answer.Question = randomWordQuestion;
+
+            Console.WriteLine(answer.Question);
+
+            for (var i = 0; i < answer.Answer.Length ; i++)
+            {
+                Console.Write("*");
+            }
+
+
+
+
+            Console.WriteLine();
+            var y = TheWholeWord();
+            if (y == true)
+            {
+                bool equall;
+                equall = TryWord(word1.Answer);
+
+            }
+            else
+            {
+
+
+            }
+                        
         }
     }
 }
