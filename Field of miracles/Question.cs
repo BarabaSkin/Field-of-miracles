@@ -2,7 +2,7 @@
 
 namespace Field_of_miracles
 {
-    public class Question
+    public class QuestionAnswer
     {
         public string answer;
         public string question;
