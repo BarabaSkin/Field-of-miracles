@@ -6,8 +6,4 @@
     <RootNamespace>Field_of_miracles</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\New Classes\New Classes.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,11 +1,11 @@
 ﻿using System;
-using New_Classes;
 
 
 namespace Field_of_miracles
 {
     class Program
     {
+       
         private static string RandomQuestion(out string answer)
         {
             string question = "";
@@ -34,33 +34,6 @@ namespace Field_of_miracles
             answer = Answer;
             return question;           
         }
-        private static bool TheWholeWord()
-        {
-            bool r = true;
-            bool z = true;
-            while (z)
-            {
-                Console.WriteLine("Вы готовы ввести слово полностью?");
-                string word = Console.ReadLine();
-                if (word == "Yes")
-                {
-                    r = true;
-                    z = false;
-                }
-                else if (word == "No")
-                {
-                    r = false;
-                    z = false;
-                }
-                else if (word != "Yes")
-                {
-                    Console.WriteLine("Вы ввели неправильное значение!");
-                    z = true;
-                }
-            }
-            return r;
-            
-        }
 
 
         static void Main(string[] args)
@@ -73,23 +46,46 @@ namespace Field_of_miracles
                 Console.Write("*");
             }
             Console.WriteLine();
-            
 
 
 
 
 
-
-           QuestionsAndAnswers word1 = new QuestionsAndAnswers();
-            word1.answer = "Колибри";
-            word1.question = "Эта птица может летать спиной вперед";
-            word1.Question();
-            for (var i = 0; i < word1.answer.Length; i++)
+            bool repeat = true;
+            while (repeat)
             {
-                Console.Write("*");
+               Question word1 = new Question();
+                word1.answer = "КОЛИБРИ";
+                word1.question = "Эта птица может летать спиной вперед";
+                word1.Question();
+                for (var i = 0; i < word1.answer.Length; i++)
+                {
+                    Console.Write("*");
+                }
+
+
+                Console.WriteLine();
+                var y = Game.TheWholeWord();
+                if (y == true)
+                {
+                    bool equall;
+                    equall = Game.TryWord(word1.answer);
+               
+                }
+                else
+                {
+
+
+
+
+                }
+                repeat = Game.End();
             }
-            Console.WriteLine();
-            var y = TheWholeWord();
+
+
+
+
+
         }
     }    
 
