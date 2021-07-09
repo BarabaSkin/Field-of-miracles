@@ -8,6 +8,64 @@ namespace Field_of_miracles
 {
     public class Game
     {
+        public QuestionAnswer Start()
+        {
+            Data words = new();
+            var answer = words.ChooseRandomWord();
+            Console.WriteLine(answer.Question);
+            for (var i = 0; i < answer.Answer.Length; i++)
+            {
+                Console.Write("*");
+            }
+            return answer;
+        }
+        public bool TheWholeWord()
+        {
+            var t = Start();
+            Console.WriteLine();
+            bool r = true;
+            bool z = true;
+            while (z)
+            {
+                Console.WriteLine("Вы готовы ввести слово полностью?");
+                string word = Console.ReadLine();
+                if (word == "Yes")
+                {
+                    r = true;
+                    z = !TryWord(t);
+                }
+                else if (word == "No")
+                {
+                    r = false;
+                    z = false;
+                }
+                else if (word != "Yes")
+                {
+                    Console.WriteLine("Вы ввели неправильное значение!");
+                    z = true;
+                }
+            }
+            return r;
+
+        }
+        public bool TryWord(QuestionAnswer word)
+        {
+            var wooord = word.Answer;
+            Console.WriteLine("Введите слово CAPS Lock'ом");
+            var wordEquallValue = true;
+            var value = Console.ReadLine();
+            if (wooord == value)
+            {
+                Console.WriteLine("Вы угадали слово)");
+                wordEquallValue = true;
+            }
+            else
+            {
+                Console.WriteLine("Вы не угдали(");
+                wordEquallValue = false;
+            }
+            return wordEquallValue;
+        }
         public bool End()
         {
             Console.WriteLine("Для завершения программы введите 'End' \nЧтобы начать заново введите'Repeat'");
@@ -36,63 +94,5 @@ namespace Field_of_miracles
             }
             return x;
         }
-        public bool TheWholeWord()
-        {
-            bool r = true;
-            bool z = true;
-            while (z)
-            {
-                Console.WriteLine("Вы готовы ввести слово полностью?");
-                string word = Console.ReadLine();
-                if (word == "Yes")
-                {
-                    r = true;
-                    z = false;
-                }
-                else if (word == "No")
-                {
-                    r = false;
-                    z = false;
-                }
-                else if (word != "Yes")
-                {
-                    Console.WriteLine("Вы ввели неправильное значение!");
-                    z = true;
-                }
-            }
-            return r;
-
-        }
-        public bool TryWord(string word)
-        {
-            Console.WriteLine("Введите слово CAPS Lock'ом");
-            var wordEquallValue = true;
-            var value = Console.ReadLine();
-            if (word == value)
-            {
-                Console.WriteLine("Вы угадали слово)");
-                wordEquallValue = true;
-            }
-            else
-            {
-                Console.WriteLine("Вы не угдали(");
-                wordEquallValue = false;
-            }
-            return wordEquallValue;
-        }
-        public void Start()
-        {
-            Data words = new();
-            var wordquestion = words.ChooseRandomWord();
-            Console.WriteLine(wordquestion.Question);
-            for (var i = 0; i < wordquestion.Answer.Length; i++)
-            {
-                Console.Write("*");
-            }
-        }
-
-
-
-
     }
 }

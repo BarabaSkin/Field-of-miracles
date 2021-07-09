@@ -32,8 +32,6 @@ namespace Field_of_miracles
             var random = new Random();
             var ii = random.Next(0, 3);
             return items[ii];
-        }
-
-        
+        }        
     }
 }
