@@ -10,8 +10,7 @@ namespace Field_of_miracles
     {
         public QuestionAnswer Start()
         {
-            Data words = new();
-            var answer = words.ChooseRandomWord();
+            var answer = Data.ChooseRandomWord();
             Console.WriteLine(answer.Question);
             for (var i = 0; i < answer.Answer.Length; i++)
             {
@@ -29,17 +28,20 @@ namespace Field_of_miracles
             {
                 Console.WriteLine("Вы готовы ввести слово полностью?");
                 string word = Console.ReadLine();
+                // сопоставление введенного слова со словом да
                 if (word == "Yes")
                 {
                     r = true;
                     z = !TryWord(t);
                 }
+                // соспоставление введенного слова со словом нет
                 else if (word == "No")
                 {
                     r = false;
                     z = false;
                 }
-                else if (word != "Yes")
+                // введенное слово не равно да
+                else // if (word != "Yes")
                 {
                     Console.WriteLine("Вы ввели неправильное значение!");
                     z = true;

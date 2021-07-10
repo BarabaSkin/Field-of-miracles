@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Field_of_miracles
 {
-    public class Data
+    public static class Data
     {
-        readonly QuestionAnswer [] items = new QuestionAnswer[]
+        readonly static  QuestionAnswer [] items = new QuestionAnswer[]
         {
             new QuestionAnswer()
             {
@@ -27,7 +27,7 @@ namespace Field_of_miracles
                 Question = "Какое животное дало название распространенному в Древнем Риме способу боевого построения?"
             }
         };
-        public QuestionAnswer ChooseRandomWord()
+        public static QuestionAnswer ChooseRandomWord()
         {
             var random = new Random();
             var ii = random.Next(0, 3);
