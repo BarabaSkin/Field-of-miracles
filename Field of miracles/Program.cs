@@ -7,8 +7,8 @@ namespace Field_of_miracles
     {
         static void Main(string[] args)
         {
-            var enteringword = new Game();
-            enteringword.TheWholeWord();
+            var game = new Game();
+            game.Start();
 
 
 

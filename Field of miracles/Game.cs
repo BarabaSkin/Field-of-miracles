@@ -8,19 +8,47 @@ namespace Field_of_miracles
 {
     public class Game
     {
-        public QuestionAnswer Start()
+        public void Start()
         {
-            var answer = Data.ChooseRandomWord();
-            Console.WriteLine(answer.Question);
-            for (var i = 0; i < answer.Answer.Length; i++)
+            var endorrepeat = true;
+            while (endorrepeat)
             {
-                Console.Write("*");
+                var answer = Data.ChooseRandomWord();
+                Console.WriteLine(answer.Question);
+                for (var i = 0; i < answer.Answer.Length; i++)
+                {
+                    Console.Write("*");
+                }
+
+
+                if (TheWholeWord() == true)
+                {
+                    if (TryWord(answer) == true)
+                    {
+                        endorrepeat = End();
+                    }
+                    else
+                    {
+
+
+
+
+
+                        Console.WriteLine("tritjkfhgldg");
+                    }
+                }
+                else
+                {
+                    
+
+
+
+                }
             }
-            return answer;
+
         }
         public bool TheWholeWord()
         {
-            var t = Start();
             Console.WriteLine();
             bool r = true;
             bool z = true;
@@ -32,7 +60,7 @@ namespace Field_of_miracles
                 if (word == "Yes")
                 {
                     r = true;
-                    z = !TryWord(t);
+                    z = false;
                 }
                 // соспоставление введенного слова со словом нет
                 else if (word == "No")
@@ -43,7 +71,7 @@ namespace Field_of_miracles
                 // введенное слово не равно да
                 else // if (word != "Yes")
                 {
-                    Console.WriteLine("Вы ввели неправильное значение!");
+                    Console.WriteLine("Вы ввели неправильное значение! \nПовторите ввод:");
                     z = true;
                 }
             }
@@ -52,21 +80,21 @@ namespace Field_of_miracles
         }
         public bool TryWord(QuestionAnswer word)
         {
-            var wooord = word.Answer;
+            var woord = word.Answer;
+            var equal = true;
             Console.WriteLine("Введите слово CAPS Lock'ом");
-            var wordEquallValue = true;
             var value = Console.ReadLine();
-            if (wooord == value)
+            if (woord == value)
             {
                 Console.WriteLine("Вы угадали слово)");
-                wordEquallValue = true;
+                equal = true;
             }
             else
             {
                 Console.WriteLine("Вы не угдали(");
-                wordEquallValue = false;
+                equal = false;
             }
-            return wordEquallValue;
+            return equal;
         }
         public bool End()
         {
@@ -88,7 +116,7 @@ namespace Field_of_miracles
                     t = false;
                     x = true;
                 }
-                else if (end != "End")
+                else
                 {
                     Console.WriteLine("Повторите ввод! \n");
                     t = true;
