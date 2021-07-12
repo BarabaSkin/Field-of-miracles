@@ -15,39 +15,90 @@ namespace Field_of_miracles
             {
                 var answer = Data.ChooseRandomWord();
                 Console.WriteLine(answer.Question);
+                string[] word = new string[answer.Answer.Length];
                 for (var i = 0; i < answer.Answer.Length; i++)
                 {
                     Console.Write("*");
                 }
 
 
-                if (TheWholeWord() == true)
+                if (EnterTheWholeWord() == true)
                 {
-                    if (TryWord(answer) == true)
-                    {
-                        endorrepeat = End();
-                    }
+                    if (TryWord(answer) == true) ;
                     else
                     {
+                        var g = true;
+                        while (g)
+                        {
+                            var let = EnterTheLetter();
+                            if (IsOneLetter(let) == true)
+                            {
+                                var lette = Convert.ToChar(let);
+                                if (CheckLetterInAnswer(lette, answer.Answer) == true)
+                                {
+                                    Console.WriteLine("Вы угадали)");
+
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Такой буквы нет (");
+                                }
+                                g = false;
+                            }
+                            else
+                            {
+                                g = IsOneLetter(let);
+                            }
 
 
+                        }
 
-
-
-                        Console.WriteLine("tritjkfhgldg");
                     }
                 }
+
+
+
+
                 else
                 {
-                    
+                    var g = true;
+                    while (g)
+                    {
+                        var let = EnterTheLetter();
+                        if (IsOneLetter(let) == true)
+                        {
+                            var lette = Convert.ToChar(let);
+                            if (CheckLetterInAnswer(lette, answer.Answer) == true)
+                            {
+                                Console.WriteLine("Вы угадали)");
 
+                            }
+                            else
+                            {
+                                Console.WriteLine("Такой буквы нет (");
+                            }
+                            g = false;
+                        }
+                        else
+                        {
+                            g = IsOneLetter(let);
+                        }
+
+
+                    }
 
 
                 }
+               
+                
+                
+                
+                
+                endorrepeat = End();
             }
 
         }
-        public bool TheWholeWord()
+        public bool EnterTheWholeWord()
         {
             Console.WriteLine();
             bool r = true;
@@ -69,7 +120,7 @@ namespace Field_of_miracles
                     z = false;
                 }
                 // введенное слово не равно да
-                else // if (word != "Yes")
+                else
                 {
                     Console.WriteLine("Вы ввели неправильное значение! \nПовторите ввод:");
                     z = true;
@@ -124,5 +175,70 @@ namespace Field_of_miracles
             }
             return x;
         }
+
+        public string EnterTheLetter()
+        {
+            Console.WriteLine("Напишите одну букву Caps Lock'ом ");
+            string T = Console.ReadLine();
+            return T;
+        }
+        public bool IsOneLetter(string T)
+        {
+            if (T.Length != 1)
+            {
+                Console.WriteLine("Вы ввели неправильное значение \nПовторите ввод: ");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool CheckLetterInAnswer(char letter, string answer)
+        {
+            foreach (var b in answer)
+            {
+                if (b == letter)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
+
+
+
+        public void OpenLetter()
+        {
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
