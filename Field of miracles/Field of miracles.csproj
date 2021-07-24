@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelMapper" Version="5.2.314" />
   </ItemGroup>
 
 </Project>

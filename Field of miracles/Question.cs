@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Ganss.Excel;
+using System;
 
 namespace Field_of_miracles
 {
     public class QuestionAnswer
     {
-        public string Answer;
-        public string Question;
+        [Column("Answer")]
+        public string Answer { get; set; }
+
+        [Column("Question")]
+        public string Question { get; set; }
+        
     }
 }

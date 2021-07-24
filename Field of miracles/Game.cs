@@ -10,11 +10,13 @@ namespace Field_of_miracles
     {
         public void Start()
         {
+            var resylt = Data.GetData();
             // var round = new Round(1,);
 
             var endorrepeat = true;
             while (endorrepeat)
             {
+
                 var answer = Data.ChooseRandomWord();
                 Console.WriteLine(answer.Question);
                 for (var i = 0; i < answer.Answer.Length; i++)
@@ -25,7 +27,7 @@ namespace Field_of_miracles
 
                 if (EnterTheWholeWord() == true)
                 {
-                    if (TryWord(answer) == true) ;
+                    if (TryWord(answer) == true) ; // переделать
                     else
                     {
                         int index;
