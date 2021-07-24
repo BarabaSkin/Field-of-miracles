@@ -10,12 +10,13 @@ namespace Field_of_miracles
     {
         public void Start()
         {
+            // var round = new Round(1,);
+
             var endorrepeat = true;
             while (endorrepeat)
             {
                 var answer = Data.ChooseRandomWord();
                 Console.WriteLine(answer.Question);
-                string[] word = new string[answer.Answer.Length];
                 for (var i = 0; i < answer.Answer.Length; i++)
                 {
                     Console.Write("*");
@@ -27,16 +28,39 @@ namespace Field_of_miracles
                     if (TryWord(answer) == true) ;
                     else
                     {
+                        int index;
                         var g = true;
                         while (g)
                         {
                             var let = EnterTheLetter();
                             if (IsOneLetter(let) == true)
                             {
-                                var lette = Convert.ToChar(let);
-                                if (CheckLetterInAnswer(lette, answer.Answer) == true)
+                                var letter = Convert.ToChar(let);
+                                if (CheckLetterInAnswer(letter, answer.Answer, out index) == true)
                                 {
+
+
+
+
+
+
                                     Console.WriteLine("Вы угадали)");
+                                    for (var i = 0; i < answer.Answer.Length; i++)
+                                    {
+                                        if (i == index)
+                                        {
+                                            Console.Write(answer.Answer[index]);
+                                        }
+                                        else
+                                        {
+                                            Console.Write("*");
+                                        }
+
+
+                                    }
+
+
+
 
                                 }
                                 else
@@ -47,7 +71,7 @@ namespace Field_of_miracles
                             }
                             else
                             {
-                                g = IsOneLetter(let);
+                                g = true;
                             }
 
 
@@ -61,39 +85,13 @@ namespace Field_of_miracles
 
                 else
                 {
-                    var g = true;
-                    while (g)
-                    {
-                        var let = EnterTheLetter();
-                        if (IsOneLetter(let) == true)
-                        {
-                            var lette = Convert.ToChar(let);
-                            if (CheckLetterInAnswer(lette, answer.Answer) == true)
-                            {
-                                Console.WriteLine("Вы угадали)");
-
-                            }
-                            else
-                            {
-                                Console.WriteLine("Такой буквы нет (");
-                            }
-                            g = false;
-                        }
-                        else
-                        {
-                            g = IsOneLetter(let);
-                        }
-
-
-                    }
-
-
+                    
                 }
-               
-                
-                
-                
-                
+
+
+
+
+
                 endorrepeat = End();
             }
 
@@ -105,7 +103,7 @@ namespace Field_of_miracles
             bool z = true;
             while (z)
             {
-                Console.WriteLine("Вы готовы ввести слово полностью?");
+                Console.WriteLine("\nВы готовы ввести слово полностью?");
                 string word = Console.ReadLine();
                 // сопоставление введенного слова со словом да
                 if (word == "Yes")
@@ -147,14 +145,14 @@ namespace Field_of_miracles
             }
             return equal;
         }
-        public bool End()
+        private bool End()
         {
-            Console.WriteLine("Для завершения программы введите 'End' \nЧтобы начать заново введите'Repeat'");
             var t = true;
-            var x = true;
-            var end = Console.ReadLine();
+            var x = true;  
             while (t)
             {
+                Console.WriteLine("Для завершения программы введите 'End' \nЧтобы начать заново введите'Repeat'");
+                var end = Console.ReadLine();
                 if (end == "End")
                 {
                     Console.WriteLine("Завершение программы.");
@@ -169,13 +167,12 @@ namespace Field_of_miracles
                 }
                 else
                 {
-                    Console.WriteLine("Повторите ввод! \n");
+                    Console.WriteLine("Повторите ввод!");
                     t = true;
                 }
             }
             return x;
         }
-
         public string EnterTheLetter()
         {
             Console.WriteLine("Напишите одну букву Caps Lock'ом ");
@@ -194,29 +191,18 @@ namespace Field_of_miracles
                 return true;
             }
         }
-        public bool CheckLetterInAnswer(char letter, string answer)
+        public bool CheckLetterInAnswer(char letter, string answer, out int index)
         {
-            foreach (var b in answer)
+            for (var i = 0; i < answer.Length; i++)
             {
-                if (b == letter)
+                if (answer[i] == letter)
                 {
+                    index = i;
                     return true;
                 }
             }
+            index = 1000000000;
             return false;
-        }
-
-
-
-
-
-
-        public void OpenLetter()
-        {
-
-
-
-
         }
 
 
