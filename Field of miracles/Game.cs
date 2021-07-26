@@ -10,8 +10,35 @@ namespace Field_of_miracles
     {
         public void Start()
         {
-            var resylt = Data.GetData();
+            var result = Data.GetData();
+            var u = Data.ChoseWord(result);
+            var t = Data.CreateNewArray(u,result);
+
+
+
+
+
+
             // var round = new Round(1,);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             var endorrepeat = true;
             while (endorrepeat)

@@ -42,6 +42,13 @@ namespace Field_of_miracles
 
 
 
+
+
+
+
+
+
+
         public static QuestionAnswer[] GetData()
         {
             try
@@ -57,7 +64,32 @@ namespace Field_of_miracles
             {
             }
             return new QuestionAnswer[arraySize];
-
         }
+        public static QuestionAnswer ChoseWord(QuestionAnswer[] allValues)
+        {
+            var random = new Random();
+            var i = random.Next(0, allValues.Length+1);
+            return allValues[i];
+        }
+        public static QuestionAnswer[] CreateNewArray(QuestionAnswer value, QuestionAnswer[] array)
+        {
+            QuestionAnswer[] NArray = new QuestionAnswer[array.Length - 1];
+            var isSkiped = false;
+            var i = 0;
+            foreach (var item in array)
+            {
+                if (item == value && !isSkiped)
+                {
+                    isSkiped = false;
+                }
+                else
+                {
+                    NArray[i] = item;
+                    i++;
+                }
+            }
+            return NArray;
+        }
+
     }
 }
