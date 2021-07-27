@@ -46,7 +46,7 @@ namespace Field_of_miracles
 
 
 
-
+         
 
 
         public static QuestionAnswer[] GetData()
@@ -68,7 +68,7 @@ namespace Field_of_miracles
         public static QuestionAnswer ChoseWord(QuestionAnswer[] allValues)
         {
             var random = new Random();
-            var i = random.Next(0, allValues.Length+1);
+            var i = random.Next(0, allValues.Length);
             return allValues[i];
         }
         public static QuestionAnswer[] CreateNewArray(QuestionAnswer value, QuestionAnswer[] array)

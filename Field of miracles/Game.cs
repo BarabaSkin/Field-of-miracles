@@ -10,51 +10,41 @@ namespace Field_of_miracles
     {
         public void Start()
         {
-            var result = Data.GetData();
-            var u = Data.ChoseWord(result);
-            var t = Data.CreateNewArray(u,result);
-
-
-
-
-
-
             // var round = new Round(1,);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            var data = Data.GetData();
             var endorrepeat = true;
             while (endorrepeat)
             {
 
-                var answer = Data.ChooseRandomWord();
-                Console.WriteLine(answer.Question);
-                for (var i = 0; i < answer.Answer.Length; i++)
-                {
-                    Console.Write("*");
-                }
+
+
+
+
+
+
+
+
+
+                var wordAnswer = Data.ChoseWord(data);
+                data = Data.CreateNewArray(wordAnswer, data);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 if (EnterTheWholeWord() == true)
                 {
-                    if (TryWord(answer) == true) ; // переделать
+                    if (TryWord(wordAnswer) == true) ; // переделать
                     else
                     {
                         int index;
@@ -65,20 +55,15 @@ namespace Field_of_miracles
                             if (IsOneLetter(let) == true)
                             {
                                 var letter = Convert.ToChar(let);
-                                if (CheckLetterInAnswer(letter, answer.Answer, out index) == true)
+                                if (CheckLetterInAnswer(letter, wordAnswer.Answer, out index) == true)
                                 {
 
-
-
-
-
-
                                     Console.WriteLine("Вы угадали)");
-                                    for (var i = 0; i < answer.Answer.Length; i++)
+                                    for (var i = 0; i < wordAnswer.Answer.Length; i++)
                                     {
                                         if (i == index)
                                         {
-                                            Console.Write(answer.Answer[index]);
+                                            Console.Write(wordAnswer.Answer[index]);
                                         }
                                         else
                                         {
@@ -87,8 +72,6 @@ namespace Field_of_miracles
 
 
                                     }
-
-
 
 
                                 }
@@ -119,9 +102,20 @@ namespace Field_of_miracles
 
 
 
-
+                
 
                 endorrepeat = End();
+
+
+
+
+
+                //Console.WriteLine(wordAnswer.Question);
+                //for (var i = 0; i < wordAnswer.Answer.Length; i++)
+                //{
+                //    Console.Write("*");
+                //}
+
             }
 
         }
