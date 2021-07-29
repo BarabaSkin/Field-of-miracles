@@ -21,23 +21,33 @@ namespace Field_of_miracles
                 var round = new Round(roundId, wordAnswer.Question, wordAnswer.Answer, 1); //Новая переменная, хранящая номер раунда, вопрос, ответ и Id игрока.              
                 round.WriteNumberOfRound(); //Вывод в консоль номера раунда и информирование о его начале
                 round.WriteQuestionOfRound(); //Вывод в консоль вопроса
-                var answer = round.WriteClosedAnswer(); //Вывод в консоль * вместо каждой буквы ответа. Создание массива с буквами ответа
-
+                var closedAnswer = round.WriteClosedAnswer(); //Вывод в консоль * вместо каждой буквы ответа. Создание массива с буквами ответа               
 
                 if (EnterTheWholeWord() == true) //Проверка: готов ли пользователь ввести слово полностью
                 {
                     if (TryWord(wordAnswer) != true) //Ввод слова и его проверка
                     {
-                        var letter = EnterTheLetter();
 
-                        if (round.TryLetterInAnswer(answer, letter)==true)
+
+
+
+
+
+                        var letter = EnterTheLetter(); //Просьба ввести букву
+                        if (round.TryLetterInAnswer(closedAnswer, letter) == true) //Введенная буква есть в ответе
                         {
                             Console.WriteLine("Вы угадали!");
+                            round.WriteClosedAnswer(letter); //Вывод в консоль *, кроме угаданной буквы
                         }
                         else
                         {
                             Console.WriteLine("Такой буквы нет (");
                         }
+
+
+
+
+
                     }
                     else
                     {
@@ -45,14 +55,12 @@ namespace Field_of_miracles
                     }
                 }
 
-
                 else
                 {
                 }
                 endorrepeat = End();
                 roundId++;
             }
-
         }
         public bool EnterTheWholeWord()
         {
@@ -133,8 +141,8 @@ namespace Field_of_miracles
         public char EnterTheLetter()
         {
             Console.WriteLine("Напишите одну букву Caps Lock'ом ");
-            var T = Convert.ToChar(Console.Read());
-            return T;
+            var T = Console.ReadKey();
+            return T.KeyChar;
         }
 
 

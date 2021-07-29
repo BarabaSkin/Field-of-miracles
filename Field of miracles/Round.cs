@@ -31,14 +31,22 @@ namespace Field_of_miracles
             Answer = answer;
             PlayerId = playerId;
         }
+
+
         public void WriteNumberOfRound()
         {
             Console.WriteLine($"Начало {Id} раунда");
         }
+
+
+
         public void WriteQuestionOfRound()
         {
             Console.WriteLine(Question);
         }
+
+
+
         public char[] WriteClosedAnswer()
         {
             for (var i = 0; i < Answer.Length; i++)
@@ -48,6 +56,9 @@ namespace Field_of_miracles
             char[] word = Answer.ToCharArray();
             return word;
         }
+
+
+
         public bool TryLetterInAnswer(char[] answer,char letter)
         {
             var wordInAnswer = true;
@@ -58,14 +69,27 @@ namespace Field_of_miracles
                     wordInAnswer = false;
                     break;
                 }
-                else
-                {
-                }
             }
             return !wordInAnswer;
         }
-        public
 
+
+
+        public void WriteClosedAnswer(char letter)
+        {
+            for (var i = 0; i < Answer.Length; i++)
+            {
+                if (Answer[i] == letter)
+                {
+                    Console.Write(letter);
+                }
+                else
+                {
+                    Console.Write("*");
+                }
+            }
+            Console.WriteLine();
+        }
 
     }
 }
