@@ -39,7 +39,7 @@ namespace Field_of_miracles
         {
             Console.WriteLine(Question);
         }
-        public char[] WriteCloseAnswer()
+        public char[] WriteClosedAnswer()
         {
             for (var i = 0; i < Answer.Length; i++)
             {
@@ -48,6 +48,24 @@ namespace Field_of_miracles
             char[] word = Answer.ToCharArray();
             return word;
         }
+        public bool TryLetterInAnswer(char[] answer,char letter)
+        {
+            var wordInAnswer = true;
+            for (var i = 0; i < answer.Length; i++)
+            {
+                if (answer[i] == letter && wordInAnswer)
+                {
+                    wordInAnswer = false;
+                    break;
+                }
+                else
+                {
+                }
+            }
+            return !wordInAnswer;
+        }
+        public
+
 
     }
 }

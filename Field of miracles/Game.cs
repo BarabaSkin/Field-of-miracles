@@ -18,18 +18,10 @@ namespace Field_of_miracles
                 var wordAnswer = Data.ChoseWord(data); //Выбор случайного вопроса и ответа
                 data = Data.CreateNewArray(wordAnswer, data); //Получение старых данных без ранне выбранного значения
 
-
-
-
                 var round = new Round(roundId, wordAnswer.Question, wordAnswer.Answer, 1); //Новая переменная, хранящая номер раунда, вопрос, ответ и Id игрока.              
                 round.WriteNumberOfRound(); //Вывод в консоль номера раунда и информирование о его начале
                 round.WriteQuestionOfRound(); //Вывод в консоль вопроса
-                var answer = round.WriteCloseAnswer(); //Вывод в консоль * вместо каждой буквы ответа. Создание массива с буквами ответа
-
-
-
-
-
+                var answer = round.WriteClosedAnswer(); //Вывод в консоль * вместо каждой буквы ответа. Создание массива с буквами ответа
 
 
                 if (EnterTheWholeWord() == true) //Проверка: готов ли пользователь ввести слово полностью
@@ -38,24 +30,14 @@ namespace Field_of_miracles
                     {
                         var letter = EnterTheLetter();
 
-
-                        if (EnterTheLetter() == 'У')
+                        if (round.TryLetterInAnswer(answer, letter)==true)
                         {
-
-                            Console.WriteLine("Вы угадали)");
-                            for (var i = 0; i < wordAnswer.Answer.Length; i++)
-                            {
-
-                            }
-
-
+                            Console.WriteLine("Вы угадали!");
                         }
                         else
                         {
                             Console.WriteLine("Такой буквы нет (");
                         }
-
-
                     }
                     else
                     {
@@ -64,24 +46,9 @@ namespace Field_of_miracles
                 }
 
 
-
-
-
-
-
-
-
                 else
                 {
-                    
                 }
-
-
-
-
-
-                
-
                 endorrepeat = End();
                 roundId++;
             }
