@@ -46,7 +46,8 @@ namespace Field_of_miracles
 
 
 
-         
+
+
 
 
         public static QuestionAnswer[] GetData()
@@ -90,6 +91,11 @@ namespace Field_of_miracles
             }
             return NArray;
         }
+
+
+
+
+
 
     }
 }

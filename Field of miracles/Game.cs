@@ -10,27 +10,16 @@ namespace Field_of_miracles
     {
         public void Start()
         {
-            // var round = new Round(1,);
-
-            var data = Data.GetData();
+            var data = Data.GetData(); //Получение данных из Excel
+            var roundId = 1;
+            var playerId = 21;
             var endorrepeat = true;
             while (endorrepeat)
             {
-
-
-
-
-
-
-
-
-
-
-                var wordAnswer = Data.ChoseWord(data);
-                data = Data.CreateNewArray(wordAnswer, data);
-
-
-
+                var wordAnswer = Data.ChoseWord(data); //Выбор случайного вопроса и ответа
+                data = Data.CreateNewArray(wordAnswer, data); //Получение старых данных без ранне выбранного значения
+                var round = new Round(roundId, wordAnswer.Question, wordAnswer.Answer, playerId);//Новая переменная, хранящая номер раунда, вопрос, ответ и Id игрока.
+                Round.WriteNumberOfRound();
 
 
 
@@ -44,8 +33,7 @@ namespace Field_of_miracles
 
                 if (EnterTheWholeWord() == true)
                 {
-                    if (TryWord(wordAnswer) == true) ; // переделать
-                    else
+                    if (TryWord(wordAnswer) != true) //Ввод слова полностью и его проверка
                     {
                         int index;
                         var g = true;
@@ -91,10 +79,6 @@ namespace Field_of_miracles
 
                     }
                 }
-
-
-
-
                 else
                 {
                     
@@ -102,20 +86,17 @@ namespace Field_of_miracles
 
 
 
+
+
                 
 
                 endorrepeat = End();
-
-
-
-
-
+                roundId++;
                 //Console.WriteLine(wordAnswer.Question);
                 //for (var i = 0; i < wordAnswer.Answer.Length; i++)
                 //{
                 //    Console.Write("*");
                 //}
-
             }
 
         }

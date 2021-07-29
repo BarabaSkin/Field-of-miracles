@@ -19,7 +19,7 @@ namespace Field_of_miracles
         /// <summary>
         /// Идентификатор раунда 
         /// </summary>
-        public int Id;
+        public static int Id;
         /// <summary>
         /// Вопрос
         /// </summary>
@@ -32,5 +32,9 @@ namespace Field_of_miracles
         /// Индентификатор игрока
         /// </summary>
         public int PlayerId;
+        public static void WriteNumberOfRound()
+        {
+            Console.WriteLine($"Начало {Round.Id} раунда");
+        }
     }
 }
