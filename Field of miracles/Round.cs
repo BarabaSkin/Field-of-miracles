@@ -8,14 +8,6 @@ namespace Field_of_miracles
 {
     class Round
     {
-        public Round(int id, string question, string answer, int playerId)
-        {
-            Id = id;
-            Question = question;
-            Answer = answer;
-            PlayerId = playerId;
-        }
-
         /// <summary>
         /// Идентификатор раунда 
         /// </summary>
@@ -23,18 +15,39 @@ namespace Field_of_miracles
         /// <summary>
         /// Вопрос
         /// </summary>
-        public string Question;
+        public static string Question;
         /// <summary>
         /// Ответ
         /// </summary>
-        public string Answer;
+        public static string Answer;
         /// <summary>
         /// Индентификатор игрока
         /// </summary>
-        public int PlayerId;
-        public static void WriteNumberOfRound()
+        public static int PlayerId;
+        public Round(int id, string question, string answer, int playerId)
         {
-            Console.WriteLine($"Начало {Round.Id} раунда");
+            Id = id;
+            Question = question;
+            Answer = answer;
+            PlayerId = playerId;
         }
+        public void WriteNumberOfRound()
+        {
+            Console.WriteLine($"Начало {Id} раунда");
+        }
+        public void WriteQuestionOfRound()
+        {
+            Console.WriteLine(Question);
+        }
+        public char[] WriteCloseAnswer()
+        {
+            for (var i = 0; i < Answer.Length; i++)
+            {
+                Console.Write("*");
+            }
+            char[] word = Answer.ToCharArray();
+            return word;
+        }
+
     }
 }
